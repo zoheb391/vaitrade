@@ -20,12 +20,20 @@ mongoose.connect('mongodb://localhost:27017/')
 app.post('/complexity', async (req, res) => {
 
     const input = req.body.input
+
+    if(input.length > 1000){
+        res.status(400).send("input too long")
+    }
     // replace ! with .
     const replacedInput = input.replace(exclamationRegex, '.').trim().toLowerCase()
     // replace . ; ' and , with empty string
     const sanitizedInput = replacedInput.replace(sanitizeRegex, '')
     // turn string into array of words
     const fullSplit = sanitizedInput.split(' ')
+
+    if(fullSplit.length > 100){
+        res.status(400).send("input too long")
+    }
 
     const overall_ld = await getLexicalDensity(fullSplit)
     let data = { data: { overall_ld } }
