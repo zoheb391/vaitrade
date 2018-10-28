@@ -1,0 +1,23 @@
+version: '2'
+services:
+    api:
+        container_name: vaitrade-assignment
+        image: node:8.4
+        restart: always
+        volumes:
+            - ./src:/usr/src/app/
+        ports:
+            - 8080:8080
+        entrypoint: ["yarn", "start"]
+
+
+
+    mongodb:
+        image: mongo:latest
+        volumes:
+            - ./data/db:/data/db
+        container_name: 'mongodb'
+        ports:
+            - 27017:27017
+        links:
+            - api

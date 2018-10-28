@@ -4,6 +4,9 @@
   "main": "server.js",
   "author": "zoheb salam <zoheb_391@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+      "start": "nodemon server.js --exec babel-node --presets es2015"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
