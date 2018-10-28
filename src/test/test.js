@@ -15,7 +15,7 @@ describe('lexical density', () => {
                     input: 'kim loves going to the cinema'
                 })
                 .end((err, res) => {
-                  res.body.data.total_ld.should.equal('0.67')
+                  res.body.data.overall_ld.should.equal('0.67')
                   res.should.have.status(200);
                   done()
                 })

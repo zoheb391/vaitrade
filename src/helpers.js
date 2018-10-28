@@ -1,3 +1,5 @@
+import NonLexical from './models/NonLexical'
+
 export const getLexicalDensity = array => {
     return new Promise((resolve) => {
         return NonLexical.countDocuments({ word: {$in: array }}, (err, nonlexicalCount) => {
