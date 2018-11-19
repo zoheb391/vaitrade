@@ -3,7 +3,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import NonLexical from './models/NonLexical'
-import { getLexicalDensity, getSentenceLexicalDensity  } from './helpers'
+import { words as defaultWords } from './nonlexicalwords.js'
+import { getLexicalDensity, getSentenceLexicalDensity, addDefaultWords  } from './helpers'
 
 
 const app = express()
@@ -15,6 +16,17 @@ let sanitizeRegex = /[.,;']+/g
 
 app.use(bodyParser())
 mongoose.connect('mongodb://mongodb')
+
+// get this route to add the default non-lexical words
+app.get('/addDefaultWords', (req, res) => {
+    addDefaultWords(defaultWords)
+        .then(resp => {
+            res.send('default words added')
+        })
+        .catch(err => {
+            res.send(err)
+        })
+})
 
 app.post('/complexity', async (req, res) => {
 

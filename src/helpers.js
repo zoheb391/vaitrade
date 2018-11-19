@@ -1,5 +1,15 @@
 import NonLexical from './models/NonLexical'
 
+export const addDefaultWords = array => {
+    return new Promise((resolve, reject) => {
+        array.map(word => {
+            NonLexical.create({ word }, (err, res) => {
+                if(err) reject(err)
+            })
+        })
+    })
+}
+
 export const getSentenceLexicalDensity = array => {
     return Promise.all(array.map(sentence => {
         let sentenceArray = [ ...sentence.trim().split(' ') ]
