@@ -4,10 +4,10 @@ calculates lexical density for given string input by overall and per sentence me
 ## Usage
 run the commmand `docker-compose up` with docker installed to get node and mongodb up and running. <br />
 
-visit route GET /addDefaultWords to store the default non-lexical words included in the project. 
+visit route GET `/addDefaultWords` to store the default non-lexical words included in the project. 
 Otherwise, store your own non-lexical words in the db according to the schema defined <br />
 
-To get the total lexical density, make a POST request to /complexity with the following request body
+To get the total lexical density, make a POST request to `/complexity` with the following request body
 
 `{
     input: 'enter your string here'
@@ -19,7 +19,7 @@ To get the total lexical density, make a POST request to /complexity with the fo
  {data: overall_ld: 0.67}
  `
 
-To get the total lexical density and LD broken down per sentence,  make a POST request to /complexity?mode=verbose 
+To get the total lexical density and LD broken down per sentence,  make a POST request to `/complexity?mode=verbose`
 
 `
 { input: 'enter your string here. enter another string here' }
